@@ -1,0 +1,26 @@
+{
+    "name": "carsautocomplete",
+    "version": "1.0.0",
+    "description": "",
+    "main": "router.js",
+    "scripts": {
+        "start": "node ./src/server.js",
+        "dev": "nodemon ./src/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WebAhead8/CarsAutoComplete.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/WebAhead8/CarsAutoComplete/issues"
+    },
+    "homepage": "https://github.com/WebAhead8/CarsAutoComplete#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    },
+    "dependencies": {
+        "tape": "^5.1.1"
+    }
+}
