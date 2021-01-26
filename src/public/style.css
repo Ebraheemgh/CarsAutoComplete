@@ -19,22 +19,29 @@ form>div:first-child {
 }
 
 form>div:nth-child(2) {
-    width: 100%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 100%;
-    justify-content: center;
+    margin: auto;
+    margin-right: 35%;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 form>div:nth-child(2)>span {
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     background-color: rgba(128, 128, 128, 0.418);
     height: 30px;
     font-size: x-large;
     border: black 2px solid;
+}
+
+form>div:nth-child(2)>span:hover {
+    background-color: rgba(128, 128, 128, 0.685);
 }
 
 #carInput {
@@ -51,4 +58,56 @@ form>div:nth-child(2)>span {
 
 html {
     background-image: url("https://eskipaper.com/images/car-backgrounds-hd-1.jpg");
+}
+
+#output {
+    margin: auto;
+    margin-top: 30px;
+    width: 500px;
+    height: max-content;
+    background: rgba(128, 128, 128, 0.589);
+    display: none;
+    flex-direction: column;
+}
+
+#output>img {
+    width: 480px;
+    align-self: center;
+    margin-top: 5px;
+}
+
+#output>label {
+    background-color: rgba(0, 0, 0, 0.342);
+    width: fit-content;
+    color: blanchedalmond;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
