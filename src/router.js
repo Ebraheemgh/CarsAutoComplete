@@ -8,7 +8,7 @@ const router = (request, response) => {
         homeHandlers(request, response);
     } else if (url.includes("public")) {
         publicHandler(request, response);
-    } else if (url === "/car") {
+    } else if (url.includes("car")) {
         carHandler(request, response);
     } else {
         missingHandler(request, response);
