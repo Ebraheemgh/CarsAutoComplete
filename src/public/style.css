@@ -1,5 +1,54 @@
-label,
-input,
-output {
-  display: block;
+h1 {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+form>div:first-child {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form>div:nth-child(2) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    justify-content: center;
+}
+
+form>div:nth-child(2)>span {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(128, 128, 128, 0.418);
+    height: 30px;
+    font-size: x-large;
+    border: black 2px solid;
+}
+
+#carInput {
+    margin-top: 15px;
+    width: 40%;
+    height: 40px;
+}
+
+#submit {
+    margin-top: 15px;
+    height: 40px;
+    width: 10%;
+}
+
+html {
+    background-image: url("https://eskipaper.com/images/car-backgrounds-hd-1.jpg");
 }
