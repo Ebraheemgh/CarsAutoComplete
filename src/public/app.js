@@ -47,7 +47,7 @@ function getCars(body) {
 }
 let time = 500;
 let timeOut;
-document.querySelector("form").addEventListener("keyup", event => {
+document.getElementById("carInput").addEventListener("keyup", event => {
     const input = document.getElementById("carInput").value;
     clearTimeout(timeOut);
     timeOut = setTimeout(() => {
@@ -56,6 +56,6 @@ document.querySelector("form").addEventListener("keyup", event => {
 
 })
 
-document.getElementById("form").addEventListener("submit", event => {
+document.querySelector("form").addEventListener("submit", event => {
     event.preventDefault();
 })
