@@ -16,7 +16,7 @@ function getCars(body) {
     //http://localhost:3000/car?q=${body}
     //localhost-url
 
-    fetch(`${localHosturl}`, {
+    fetch(`${apiurl}`, {
             method: "GET",
         })
         .then((response) => {
