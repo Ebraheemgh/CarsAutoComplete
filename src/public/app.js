@@ -1,5 +1,5 @@
 function getCars(body) {
-
+    let apiurl = "https://cars-auto-complete.herokuapp.com/";
     const suggestion = document.getElementById("suggestion");
     const output = document.getElementById("output");
     output.style.display = "none";
@@ -8,7 +8,7 @@ function getCars(body) {
     if (body == "") {
         return;
     }
-    fetch(`http://localhost:3000/car?q=${body}`, {
+    fetch(`${apiurl}?q=${body}`, {
             method: "GET"
         })
         .then(response => {
