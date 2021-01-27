@@ -4,7 +4,7 @@ function carHandler(request, response) {
     let body = "";
     // console.log((new URL(`http://${request.url}`)).searchParams.get("q"));
 
-    body = (new URL(`https://${request.url}`)).searchParams.get("q");
+    body = (new URL(`http://${request.url}`)).searchParams.get("q");
 
 
 

@@ -8,7 +8,7 @@ function getCars(body) {
     if (body == "") {
         return;
     }
-    fetch(`${apiurl}?q=${body}`, {
+    fetch(`${apiurl}car?q=${body}`, {
             method: "GET"
         })
         .then(response => {
