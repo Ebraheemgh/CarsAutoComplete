@@ -8,6 +8,10 @@ function getCars(body) {
   if (body == "") {
     return;
   }
+  
+  //http://localhost:3000/car?q=${body}
+  //localhost-url
+
   fetch(`${apiurl}car?q=${body}`, {
     method: "GET",
   })
