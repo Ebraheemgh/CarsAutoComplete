@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cars Search</title>
     <link rel="stylesheet" href="public/style.css" />
-    <!-- <link rel="icon" href="public/favicon.ico" /> -->
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Car Search</h1>
 
     <form>
-        <div>
-            <input id="carInput" name="car" type="search" placeholder="Car Name" required />
-            <input id="submit" type="submit" value="Search">
-        </div>
-        <div id="suggestion">
-        </div>
+      <div>
+        <input
+          id="carInput"
+          name="car"
+          type="search"
+          placeholder="Car Name"
+          required
+        />
+        <input id="submit" type="submit" value="Search" />
+      </div>
+      <div id="suggestion"></div>
     </form>
 
     <div id="output">
-        <img id="carImg" src="http://ts2.mm.bing.net/th?id=OIP.M8405c51f97d104b4eb7cdfec4e80bb5bo0&pid=15.1">
-        <label id="make">make: AstonMartin</label>
-        <label id="model">model: 2016</label>
-        <label id="year">Year: 2016</label>
-        <label id="horsepower">horsepower: 2016</label>
-        <label id="price">price: 2016</label>
-
+      <img
+        id="carImg"
+        src="http://ts2.mm.bing.net/th?id=OIP.M8405c51f97d104b4eb7cdfec4e80bb5bo0&pid=15.1"
+      />
+      <label id="make">make: AstonMartin</label>
+      <label id="model">model: 2016</label>
+      <label id="year">Year: 2016</label>
+      <label id="horsepower">horsepower: 2016</label>
+      <label id="price">price: 2016</label>
     </div>
-    <!-- <img src="public/network.jpg" alt="" width="1436" height="958" /> -->
-    <!-- <script src="public/script.js"></script> -->
+
     <div class="car-container"></div>
     <script src="../public/app.js"></script>
-</body>
-
+  </body>
 </html>
