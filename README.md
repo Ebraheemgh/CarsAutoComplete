@@ -12,16 +12,16 @@ when you type on the specific car name from the list will appear to you informat
 
 
  ### Getting Started
-1.Clone this repo
-2.Run $ npm install
-3.Run $ npm install --save cross-fetch
-3.Run $ npm run dev
+1.  Clone this repo
+2.  Run $ npm install
+3.  Run $ npm install --save cross-fetch
+4.  Run $ npm run dev
 
 ### Built With
-1.JS
-2.CSS
-3.Html
-4.Nodejs
+* JS
+* CSS
+* Html
+* Nodejs
 
 *The app is responsive for all the screen sizes & devices. The app has a testing code
  
