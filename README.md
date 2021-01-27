@@ -1,8 +1,8 @@
 # Cars AutoComplete
 
 
-**description** : you can search for a car by typing in the input field, the input will automatically will appear to you suggestion according for what you type.
-when you type on the specific car name from the list will appear to you information about the car that you select.
+**description** : you can search for a car by typing in the input field, the input will automatically appear to you suggestion according for what you type.
+when you click on the specific car name from the list will appear to you information about the car that you select.
 
 ## Team work:
 1. Ebraheem Ghantous
