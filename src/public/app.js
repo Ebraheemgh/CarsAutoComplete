@@ -10,7 +10,7 @@ function getCars(body) {
     if (body == "") {
         return;
     }
-    let apiurl = "https://cars-auto-complete.herokuapp.com/";
+    let apiurl = `https://cars-auto-complete.herokuapp.com/car?q=${body}`;
     let localHosturl = `http://localhost:3000/car?q=${body}`;
 
     //http://localhost:3000/car?q=${body}
