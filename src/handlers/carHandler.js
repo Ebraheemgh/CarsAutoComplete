@@ -12,7 +12,7 @@ function carHandler(request, response) {
 
             let dataToReturn = [];
             for (let i = 0; i < carsList.length; i++) {
-                let temp = carsList[i].make + " " + carsList[i].model; 
+                let temp = carsList[i].make + " " + carsList[i].model;
                 if (temp.includes(body)) {
                     dataToReturn.push(carsList[i]);
                 }
@@ -26,7 +26,12 @@ function carHandler(request, response) {
                 response.end(JSON.stringify(dataToReturn));
             }
         })
-        .catch((error) => console.error(error));
+        .catch((error) => {
+            response.writeHead(500, { "content-type": "text/html" });
+            response.end("<h1>something went wrong</h1>");
+            console.error(error)
+
+        });
 }
 
 module.exports = carHandler;

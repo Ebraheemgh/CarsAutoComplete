@@ -11,13 +11,9 @@ function getCars(body) {
         return;
     }
 
-    let apiurl = `https://cars-auto-complete.herokuapp.com/car?q=${body}`;
-    let localHosturl = `http://localhost:3000/car?q=${body}`;
+    let apiurl = `/car?q=${body}`;
 
-
-    fetch(`${apiurl}`, {
-            method: "GET",
-        })
+    fetch(apiurl)
         .then((response) => {
             if (!response.ok) throw new Error(response.status);
 
@@ -56,6 +52,9 @@ function getCars(body) {
                 const span = document.createElement("span");
                 span.textContent = "Car Not found";
                 suggestion.appendChild(span);
+            } else {
+                console.error(error);
+                alert("somthing went wrong")
             }
         });
 }
