@@ -22,28 +22,34 @@ function getCars(body) {
         // if we get a successful response
         .then((data) => {
             for (let i = 0; i < data.length; i++) {
-                const span = document.createElement("span");
-                const img = document.createElement("img");
-                img.src = data[i].img_url;
-                span.appendChild(img);
+                const listItem = document.createElement("span");
+                const listItemImg = document.createElement("img");
+                listItemImg.src = data[i].img_url;
+                listItem.appendChild(listItemImg);
                 const t = document.createTextNode(data[i].make + " " + data[i].model);
-                span.appendChild(t);
-                span.addEventListener("click", (event) => {
-                    document.getElementById("carImg").src = data[i].img_url;
-                    document.getElementById("make").textContent =
+                listItem.appendChild(t);
+                const carImg = document.getElementById("carImg");
+                const make = document.getElementById("make");
+                const year = document.getElementById("year");
+                const model = document.getElementById("model");
+                const horsepower = document.getElementById("horsepower");
+                const price = document.getElementById("price");
+                listItem.addEventListener("click", (event) => {
+                    carImg.src = data[i].img_url;
+                    make.textContent =
                         "Make => " + data[i].make;
-                    document.getElementById("model").textContent =
+                    model.textContent =
                         "Model =>" + data[i].model;
-                    document.getElementById("year").textContent =
+                    year.textContent =
                         "Year => " + data[i].year;
-                    document.getElementById("horsepower").textContent =
+                    horsepower.textContent =
                         "HorsePower => " + data[i].horsepower;
-                    document.getElementById("price").textContent =
+                    price.textContent =
                         "Price => " + data[i].price + "$";
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });
-                suggestion.appendChild(span);
+                suggestion.appendChild(listItem);
             }
         })
         .catch((error) => {
