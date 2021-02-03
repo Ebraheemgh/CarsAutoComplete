@@ -25,7 +25,9 @@
         "tape": "^5.1.1"
     },
     "dependencies": {
+        "axios": "^0.21.1",
         "dotenv": "^8.2.0",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^2.6.1",
+        "xmlhttprequest": "^1.8.0"
     }
 }
