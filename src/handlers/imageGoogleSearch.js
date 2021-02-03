@@ -6,7 +6,7 @@ function googleHandler(request, response) {
     carName = new URL(`http://${request.url}`).searchParams.get("search");
 
     const axios = require('axios');
-    axios.post('https://api.dataforseo.com/v3/serp/google/images/live/advanced', [{ keyword: carName, language_code: "en", location_code: 2740 }], { auth: { username: process.env.USERNAME, password: process.env.PASSWORD } })
+    axios.post('https://api.dataforseo.com/v3/serp/google/images/live/advanced', [{ keyword: carName, language_code: "en", location_code: 2740 }], { auth: { username: "ave.brhom@gmail.com", password: "d4f9b29544f1b39f" } })
 
     .then(data => {
         response.writeHead(200, { "content-type": "text/plain" });
