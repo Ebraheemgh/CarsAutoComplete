@@ -1,6 +1,3 @@
-const dotenv = require("dotenv");
-dotenv.config();
-
 function googleHandler(request, response) {
     let carName = "";
     carName = new URL(`http://${request.url}`).searchParams.get("search");
@@ -13,7 +10,7 @@ function googleHandler(request, response) {
         response.end(JSON.stringify(data.data.tasks[0].result[0].items[0].source_url));
     }).catch(err => {
         response.writeHead(500, { "content-type": "text/plain" });
-        response.end("nono");
+        response.end("something went wrong");
     })
 
 }
