@@ -99,6 +99,22 @@ span>img {
     margin-left: 4px;
 }
 
+#img_btn{
+    height: 100px;
+    width:160px;
+}
+
+#youtube{
+    display: flex;
+    justify-content: center;
+}
+/* #arrow{
+    width:20px;
+    height: 10px;
+    margin-right: 10px;
+} */
+
+
 @media only screen and (max-width: 600px) {
     #carInput {
         width: 80%;

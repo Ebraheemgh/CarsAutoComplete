@@ -34,6 +34,8 @@ function getCars(body) {
                 const model = document.getElementById("model");
                 const horsepower = document.getElementById("horsepower");
                 const price = document.getElementById("price");
+                const a = document.getElementById("a");
+                
                 listItem.addEventListener("click", (event) => {
                     carImg.src = data[i].img_url;
                     make.textContent =
@@ -46,6 +48,8 @@ function getCars(body) {
                         "HorsePower => " + data[i].horsepower;
                     price.textContent =
                         "Price => " + data[i].price + "$";
+                    
+                    a.href=`https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });
