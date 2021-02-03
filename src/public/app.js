@@ -1,7 +1,8 @@
+//const fetchCarImg = require("../handlers/imageGoogleSearch");
+
 function getCars(body) {
     body = body.toLowerCase();
     body = body.trim();
-    console.log(body);
     const suggestion = document.getElementById("suggestion");
     const output = document.getElementById("output");
     output.style.display = "none";
@@ -22,20 +23,33 @@ function getCars(body) {
         // if we get a successful response
         .then((data) => {
             for (let i = 0; i < data.length; i++) {
+
                 const listItem = document.createElement("span");
                 const listItemImg = document.createElement("img");
+
                 listItemImg.src = data[i].img_url;
                 listItem.appendChild(listItemImg);
                 const t = document.createTextNode(data[i].make + " " + data[i].model);
                 listItem.appendChild(t);
-                const carImg = document.getElementById("carImg");
-                const make = document.getElementById("make");
-                const year = document.getElementById("year");
-                const model = document.getElementById("model");
-                const horsepower = document.getElementById("horsepower");
-                const price = document.getElementById("price");
+
                 listItem.addEventListener("click", (event) => {
-                    carImg.src = data[i].img_url;
+                    if (!UrlExists(data[i].img_url)) {
+                        carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
+                        fetch(`/google?search=${data[i].make}+${data[i].model}`)
+                            .then(response => {
+                                if (!response.ok) throw new Error(response.status);
+                                return response.json();
+                            })
+                            .then(src => {
+                                carImg.src = src;
+                                console.log("done")
+                            }).catch(error => {
+                                console.log(error);
+                            })
+                    } else {
+                        carImg.src = data[i].img_url;
+
+                    }
                     make.textContent =
                         "Make => " + data[i].make;
                     model.textContent =
@@ -59,7 +73,7 @@ function getCars(body) {
                 span.textContent = "Car Not found";
                 suggestion.appendChild(span);
             } else {
-                console.error(error);
+
                 alert("somthing went wrong")
             }
         });
