@@ -107,12 +107,37 @@ span>img {
 #youtube{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 /* #arrow{
-    width:20px;
-    height: 10px;
+    width:40px;
+    height: 20px;
     margin-right: 10px;
 } */
+
+#arrow {
+    display: inline-block;
+    height: 20px;
+    width: 40px;
+    font-size: 1px;
+    padding: 1px;
+    color: white;
+    margin-right: 5px;
+    margin-left: 5px;
+    animation: skew 3s infinite;
+    transform: translateX(10px);
+    animation-direction: alternate;
+    opacity: .7;
+  }
+  
+  @keyframes skew {
+    0% {
+      transform: translateX(10px);
+    }
+    100% {
+      transform: translateX(-70px);
+    }
+  }
 
 
 @media only screen and (max-width: 600px) {
