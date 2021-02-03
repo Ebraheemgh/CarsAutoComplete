@@ -39,11 +39,6 @@ function getCars(body) {
                 const horsepower = document.getElementById("horsepower");
                 const price = document.getElementById("price");
                 const a = document.getElementById("a");
-<<<<<<< HEAD
-
-=======
-                
->>>>>>> origin/main
                 listItem.addEventListener("click", (event) => {
                     if (!UrlExists(data[i].img_url)) {
                         carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
@@ -72,13 +67,8 @@ function getCars(body) {
                         "HorsePower => " + data[i].horsepower;
                     price.textContent =
                         "Price => " + data[i].price + "$";
-<<<<<<< HEAD
 
                     a.href = `https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
-=======
-                    
-                    a.href=`https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
->>>>>>> origin/main
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });
