@@ -40,23 +40,8 @@ function getCars(body) {
                 const price = document.getElementById("price");
                 const a = document.getElementById("a");
                 listItem.addEventListener("click", (event) => {
-                    if (!UrlExists(data[i].img_url)) {
-                        carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
-                        fetch(`/google?search=${data[i].make}+${data[i].model}`)
-                            .then(response => {
-                                if (!response.ok) throw new Error(response.status);
-                                return response.json();
-                            })
-                            .then(src => {
-                                carImg.src = src;
-                                console.log("done")
-                            }).catch(error => {
-                                console.log(error);
-                            })
-                    } else {
-                        carImg.src = data[i].img_url;
-
-                    }
+                    // if (!UrlExists(data[i].img_url)) {
+                    fetchDefaultImage(data[i].img_url, data[i].make, data[i].model)
                     make.textContent =
                         "Make => " + data[i].make;
                     model.textContent =
@@ -100,3 +85,29 @@ document.getElementById("carInput").addEventListener("keyup", (event) => {
 document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
 });
+
+function fetchDefaultImage(url, make, model) {
+    var img = new Image()
+    img.onload = function() {
+        if (this.height === 80 && this.width === 80) {
+
+            carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
+            fetch(`/google?search=${make}+${model}`)
+                .then(response => {
+                    if (!response.ok) throw new Error(response.status);
+                    return response.json();
+                })
+                .then(src => {
+                    carImg.src = src;
+                    console.log("done")
+                }).catch(error => {
+                    console.log(error);
+                })
+        } else {
+            carImg.src = url;
+        }
+    }
+    img.src = url
+
+
+}
