@@ -6,7 +6,6 @@ function homeHandler(request, response) {
     const filePath = path.join(__dirname, "..", "public", "index.html");
     fs.readFile(filePath, (error, file) => {
         if (error) {
-            console.log(error);
             response.writeHead(500, { "content-type": "text/html" });
             response.end("<h1>Error in reading file</h1>");
         } else {

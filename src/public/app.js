@@ -5,7 +5,7 @@ const year = document.getElementById("year");
 const model = document.getElementById("model");
 const horsepower = document.getElementById("horsepower");
 const price = document.getElementById("price");
-const a = document.getElementById("a");
+const a_youtube = document.getElementById("a");
 
 function getCars(body) {
     body = body.toLowerCase();
@@ -56,7 +56,7 @@ function getCars(body) {
                     price.textContent =
                         "Price => " + data[i].price + "$";
 
-                    a.href = `https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
+                    a_youtube.href = `https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });
@@ -98,7 +98,7 @@ function fetchDefaultImage(data) {
             if (localStorageUrl.length === 0) {
                 fetch(`/google?search=${data.make}+${data.model}`)
                     .then(response => {
-                        console.log("feching Image");
+
                         if (!response.ok) throw new Error(response.status);
                         return response.json();
                     })
@@ -117,13 +117,11 @@ function fetchDefaultImage(data) {
                         }
 
                         carImg.src = src;
-                        console.log("done feching the Image")
                     }).catch(error => {
-                        console.log(error);
+                        console.error(error);
                     })
             } else {
                 carImg.src = getFromLocalStorage(data);
-                console.log("done feching the Image from Local Storage")
 
 
             }
