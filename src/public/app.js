@@ -1,4 +1,11 @@
 //const fetchCarImg = require("../handlers/imageGoogleSearch");
+const carImg = document.getElementById("carImg");
+const make = document.getElementById("make");
+const year = document.getElementById("year");
+const model = document.getElementById("model");
+const horsepower = document.getElementById("horsepower");
+const price = document.getElementById("price");
+const a = document.getElementById("a");
 
 function getCars(body) {
     body = body.toLowerCase();
@@ -32,16 +39,12 @@ function getCars(body) {
                 const t = document.createTextNode(data[i].make + " " + data[i].model);
                 listItem.appendChild(t);
 
-                const carImg = document.getElementById("carImg");
-                const make = document.getElementById("make");
-                const year = document.getElementById("year");
-                const model = document.getElementById("model");
-                const horsepower = document.getElementById("horsepower");
-                const price = document.getElementById("price");
-                const a = document.getElementById("a");
+
                 listItem.addEventListener("click", (event) => {
+                    carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
+
                     // if (!UrlExists(data[i].img_url)) {
-                    fetchDefaultImage(data[i].img_url, data[i].make, data[i].model)
+                    fetchDefaultImage(data[i]);
                     make.textContent =
                         "Make => " + data[i].make;
                     model.textContent =
@@ -86,28 +89,65 @@ document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
 });
 
-function fetchDefaultImage(url, make, model) {
+function fetchDefaultImage(data) {
+
     var img = new Image()
     img.onload = function() {
+        console.log("height", this.height)
         if (this.height === 80 && this.width === 80) {
+            const localStorageUrl = getFromLocalStorage(data);
+            if (localStorageUrl.length === 0) {
+                fetch(`/google?search=${data.make}+${data.model}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error(response.status);
+                        return response.json();
+                    })
+                    .then(src => {
+                        console.log(data);
+                        const obj = { id: data.id, imageURL: src };
 
-            carImg.src = "https://media4.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif";
-            fetch(`/google?search=${make}+${model}`)
-                .then(response => {
-                    if (!response.ok) throw new Error(response.status);
-                    return response.json();
-                })
-                .then(src => {
-                    carImg.src = src;
-                    console.log("done")
-                }).catch(error => {
-                    console.log(error);
-                })
+                        if (!(localStorage.getItem("carImages"))) {
+                            let imagesFromLocalStorage = [];
+                            imagesFromLocalStorage.push(obj);
+                            localStorage.setItem("carImages", JSON.stringify(imagesFromLocalStorage));
+
+                        } else {
+                            let imagesFromLocalStorage = JSON.parse(localStorage.getItem("carImages") || "[]");
+                            imagesFromLocalStorage.push(obj);
+                            localStorage.setItem("carImages", JSON.stringify(imagesFromLocalStorage));
+                        }
+
+                        carImg.src = src;
+                        console.log("done")
+                    }).catch(error => {
+                        console.log(error);
+                    })
+            } else {
+                carImg.src = getFromLocalStorage(data);
+
+            }
+
         } else {
-            carImg.src = url;
+            carImg.src = data.img_url;
         }
     }
-    img.src = url
+    img.src = data.img_url;
 
+
+}
+
+function getFromLocalStorage(car) {
+    if (!(localStorage.getItem("carImages"))) {
+        return "";
+    }
+    let imagesFromLocalStorage = JSON.parse(localStorage.getItem("carImages") || "[]");;
+
+    for (let i = 0; i < imagesFromLocalStorage.length; i++) {
+
+        if (imagesFromLocalStorage[i].id === car.id) {
+            return imagesFromLocalStorage[i].imageURL;
+        }
+    }
+    return "";
 
 }
