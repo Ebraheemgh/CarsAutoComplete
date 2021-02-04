@@ -93,17 +93,16 @@ function fetchDefaultImage(data) {
 
     var img = new Image()
     img.onload = function() {
-        console.log("height", this.height)
         if (this.height === 80 && this.width === 80) {
             const localStorageUrl = getFromLocalStorage(data);
             if (localStorageUrl.length === 0) {
                 fetch(`/google?search=${data.make}+${data.model}`)
                     .then(response => {
+                        console.log("feching Image");
                         if (!response.ok) throw new Error(response.status);
                         return response.json();
                     })
                     .then(src => {
-                        console.log(data);
                         const obj = { id: data.id, imageURL: src };
 
                         if (!(localStorage.getItem("carImages"))) {
@@ -118,12 +117,14 @@ function fetchDefaultImage(data) {
                         }
 
                         carImg.src = src;
-                        console.log("done")
+                        console.log("done feching the Image")
                     }).catch(error => {
                         console.log(error);
                     })
             } else {
                 carImg.src = getFromLocalStorage(data);
+                console.log("done feching the Image from Local Storage")
+
 
             }
 
