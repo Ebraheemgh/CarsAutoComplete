@@ -28,7 +28,6 @@ when you click on the specific car name from the list will appear to you informa
 
 **Diagram:**
 ![](https://i.imgur.com/DkUnZmg.png)
-
 app url: https://cars-auto-complete.herokuapp.com/
 
 
