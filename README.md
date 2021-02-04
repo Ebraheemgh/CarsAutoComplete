@@ -14,8 +14,7 @@ when you click on the specific car name from the list will appear to you informa
  ### Getting Started
 1.  Clone this repo
 2.  Run $ npm install
-3.  Run $ npm install --save cross-fetch
-4.  Run $ npm run dev
+3.  Run $ npm run dev
 
 ### Built With
 * JS
@@ -26,6 +25,9 @@ when you click on the specific car name from the list will appear to you informa
 *The app is responsive for all the screen sizes & devices. The app has a testing code
  
 *the application deployed by heroku.
+
+**Diagram:**
+![](https://i.imgur.com/DkUnZmg.png)
 
 app url: https://cars-auto-complete.herokuapp.com/
 
