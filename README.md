@@ -27,7 +27,7 @@ when you click on the specific car name from the list will appear to you informa
 *the application deployed by heroku.
 
 **Diagram:**
-![](https://i.imgur.com/DkUnZmg.png)
+![](https://i.imgur.com/iARcNYR.png)
 app url: https://cars-auto-complete.herokuapp.com/
 
 
