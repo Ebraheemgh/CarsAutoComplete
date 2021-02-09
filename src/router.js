@@ -5,6 +5,8 @@ const publicHandler = require("./handlers/publicHandler");
 const googleHandler = require("./handlers/imageGoogleSearch");
 const signUpHandler = require("./handlers/signUpHandler");
 const loginHandler = require("./handlers/loginHandler");
+const mainHandler = require("./handlers/mainHandler");
+
 const router = (request, response) => {
     const url = request.url;
     if (url === "/") {
@@ -19,7 +21,11 @@ const router = (request, response) => {
         signUpHandler(request, response);
     } else if (url.includes("login")) {
         loginHandler(request, response);
-    } else {
+    } 
+    else if (url.includes("main")){
+        mainHandler(request, response);
+    }
+    else {
         missingHandler(request, response);
     }
 

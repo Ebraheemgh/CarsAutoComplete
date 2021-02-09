@@ -5,12 +5,14 @@ function loginHandler(request, response) {
   let password = "";
   email = new URL(`http://${request.url}`).searchParams.get("email");
   password = new URL(`http://${request.url}`).searchParams.get("password");
+  console.log(email);
+  console.log(password);
   getuser(email, password)
     .then((user) => {
-      if (user.length > 0) {
+      if (user.rows.length > 0) {
         //if exsist user
         response.writeHead(200, { "content-type": "application/json" });
-        response.end(JSON.stringify(user));
+        response.end(JSON.stringify(user.rows));
       } else {
         //if not exist
         response.writeHead(404, { "content-type": "text/html" });
@@ -18,7 +20,6 @@ function loginHandler(request, response) {
       }
     })
     .catch((error) => {
-      console.log(error);
       response.writeHead(500, { "content-type": "text/html" });
       response.end(`<h1>Something went wrong </h1>`);
     });
@@ -26,9 +27,8 @@ function loginHandler(request, response) {
 function getuser(email, password) {
   return db
     .query(
-      `select * from users where email=${email} and password=${password};
-      `
+      `select * from users where email='${email}' and password='${password}';`
     )
-    .then((result) => result.rows);
-}
+    
+  }
 module.exports = loginHandler;

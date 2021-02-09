@@ -100,7 +100,7 @@ form.addEventListener('submit', event => {
             })
             .then(response => {
                 if (response.message !== 302) throw new Error(response.status);
-                //window.location = "localhostlogin.js";
+                window.location.href = "/";
             })
             .catch(error => {
                 if (error.message == 501) {
