@@ -84,7 +84,7 @@ form.addEventListener('submit', event => {
 
     }
     console.log(valid);
-    if (false) {
+    if (valid) {
         console.log("kdsjfsdkj");
         fetch("/signup", {
                 method: "POST",
@@ -92,7 +92,7 @@ form.addEventListener('submit', event => {
                     email: email.value,
                     firstName: firstName.value,
                     lastName: lastName.value,
-                    password = password.value
+                    password: password.value
                 }),
                 headers: {
                     "Content-type": "application/json"
@@ -103,7 +103,7 @@ form.addEventListener('submit', event => {
                 //window.location = "localhostlogin.js";
             })
             .catch(error => {
-                if (error.message == 500) {
+                if (error.message == 501) {
                     errorOutput.innerHTML = "";
                     let error = document.createElement("label");
                     error.textContent = "* email already Exist";
