@@ -1,5 +1,4 @@
-const db = require("./database/connection");
-const model = require("./model");
+const db = require("../database/connection");
 
 function loginHandler(request, response) {
   let email = "";
