@@ -75,3 +75,9 @@ html {
         margin: 0px;
     }
 }
+
+a {
+    color: blue;
+    font-size: large;
+    margin-top: 20px;
+}
