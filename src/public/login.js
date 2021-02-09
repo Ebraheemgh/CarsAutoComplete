@@ -1,4 +1,4 @@
-var form = document.getElementsById("login_form");
+var form = document.querySelectorAll("form");
 var email = document.getElementById("email");
 var password = document.getElementById("password");
 var error = document.getElementById("error");
@@ -37,13 +37,14 @@ function checkEmail (){
 
 form.addEventListener("submit", function(event) {
   let valid = true;
+  error.textContent="";
   checkEmail();     
   if(valid)  {
     let apiurl = `/login?email=${email.value}$password=${password.value}`;
     fetch(apiurl)
         .then((response) => {
             if (response.statusText !==302) throw new Error(response.status);
-            // window.onload("index.html");
+            window.onload("index.html");
          })
          .catch((err) => {
             if (err.message === "404") {

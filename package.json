@@ -29,6 +29,7 @@
         "dotenv": "^8.2.0",
         "nock": "^13.0.7",
         "node-fetch": "^2.6.1",
+        "pg": "^8.5.1",
         "xmlhttprequest": "^1.8.0"
     }
 }
