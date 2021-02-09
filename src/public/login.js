@@ -1,7 +1,9 @@
-var form = document.querySelectorAll("form");
+var form = document.querySelector("form");
 var email = document.getElementById("email");
 var password = document.getElementById("password");
 var error = document.getElementById("error");
+let valid = true;
+
 
 function checkPassword (){
     if (password.value === "") { 
@@ -36,15 +38,16 @@ function checkEmail (){
 }
 
 form.addEventListener("submit", function(event) {
-  let valid = true;
+  event.preventDefault();
   error.textContent="";
   checkEmail();     
   if(valid)  {
-    let apiurl = `/login?email=${email.value}$password=${password.value}`;
+      console.log(valid);
+    let apiurl = `/login?email=${email.value}&password=${password.value}`;
     fetch(apiurl)
         .then((response) => {
-            if (response.statusText !==302) throw new Error(response.status);
-            window.onload("index.html");
+            if (!response.ok) throw new Error(response.status);
+            window.location.href ='/main';
          })
          .catch((err) => {
             if (err.message === "404") {
