@@ -3,7 +3,7 @@ const path = require("path");
 
 function homeHandler(request, response) {
     // public directory is one level above this, so we need the ".."
-    const filePath = path.join(__dirname, "..", "public", "index.html");
+    const filePath = path.join(__dirname, "..", "public", "signUp.html");
     fs.readFile(filePath, (error, file) => {
         if (error) {
             response.writeHead(500, { "content-type": "text/html" });
