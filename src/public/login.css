@@ -1,0 +1,75 @@
+.check{
+    border-color: red;
+    border-width: 3px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border: 3px solid black;
+    padding: 0px 30px 10px 30px;
+    font-weight: 1000;
+    font-size: x-large;
+    margin: auto;
+    background-color: cornsilk;
+}
+
+form>label {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px 5px 0px;
+    width: 100%;
+}
+
+/* .normalInput {
+    height: 25px;
+    background-color: rgb(214, 214, 214);
+    border: gray 2px solid;
+}
+
+.validInput {
+    height: 25px;
+    background-color: rgb(214, 214, 214);
+    border: green 2px solid;
+} */
+/* 
+.invalidInput {
+    height: 25px;
+    background-color: rgb(214, 214, 214);
+    border: red 2px solid;
+} */
+
+form>input {
+    margin: 50px 0px 0px 0px;
+    height: 25px;
+    background: gray;
+    color: honeydew;
+    border: gray 2px solid;
+}
+
+form>input:hover {
+    background: green;
+}
+
+html {
+    background-color: rgb(1, 176, 245);
+}
+
+#error {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: red;
+    font-size: large;
+}
+
+@media only screen and (max-width: 400px) {
+    form {
+        width: 100%;
+        padding: 0px 0px 0px 0px;
+        align-items: center;
+        margin: 0px;
+    }
+}
