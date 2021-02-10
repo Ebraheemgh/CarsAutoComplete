@@ -8,11 +8,9 @@ function signUpHandler(request, response) {
     request.on('end', () => {
         body = JSON.parse(body);
         adduser(body).then(result => {
-            console.log(result)
             response.writeHead(200, { "content-type": "application/json" });
             response.end(JSON.stringify(body));
         }).catch(error => {
-            console.log(error.code)
             if (error.code === "23505") {
                 response.writeHead(501, { "content-type": "text/html" });
                 response.end(`you have an account in this email`);

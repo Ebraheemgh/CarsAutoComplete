@@ -83,9 +83,8 @@ form.addEventListener('submit', event => {
         valid = false;
 
     }
-    console.log(valid);
+
     if (valid) {
-        console.log("kdsjfsdkj");
         fetch("/signup", {
                 method: "POST",
                 body: JSON.stringify({
@@ -99,8 +98,13 @@ form.addEventListener('submit', event => {
                 }
             })
             .then(response => {
-                if (response.message !== 302) throw new Error(response.status);
-                window.location.href = "/";
+                if (!response.ok) throw new Error(response.status);
+                let succsessMessage = document.createElement("label");
+                succsessMessage.textContent = "* registration success.";
+                SubmitedOutput.appendChild(succsessMessage);
+                setTimeout(function() {
+                    window.location.href = "/";
+                }, 3000);
             })
             .catch(error => {
                 if (error.message == 501) {
