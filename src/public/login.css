@@ -56,7 +56,8 @@ form>input:hover {
 }
 
 html {
-    background-color: rgb(1, 176, 245);
+    background-image: url("../public/background.jpg");
+    background-position: center;
 }
 
 #error {

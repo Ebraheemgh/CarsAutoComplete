@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS users,comments CASCADE;
 
 CREATE TABLE users (
   email VARCHAR(255) PRIMARY KEY,
@@ -10,7 +10,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE comments (
-  email VARCHAR(255) REFERENCE users(email),
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) REFERENCES users(email),
   car_id VARCHAR(255) NOT NULL,
   comment VARCHAR(255) NOT NULL
 );
