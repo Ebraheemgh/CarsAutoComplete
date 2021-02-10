@@ -1,8 +1,10 @@
 const pg = require("pg");
 const dotenv = require("dotenv");
 dotenv.config();
-
-const connectionString = "postgres://ebraheemcars:123123@localhost:5432/carsautocomplete";
-const db = new pg.Pool({ connectionString });
+let connectionString = process.env.DATABASE_URL_DEV;
+if (process.env.NODE_ENV === 'production') {
+    connectionString = process.env.DATABASE_URL;
+}
+const db = new pg.Pool({ connectionString, ssl: { rejectUnauthorized: false } });
 //db.query("SELECT * FROM USERS").then((result) => console.log(result));
 module.exports = db;
