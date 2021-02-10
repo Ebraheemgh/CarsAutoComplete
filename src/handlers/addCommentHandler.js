@@ -26,4 +26,4 @@ function addComment(data) {
     )
 }
 
-module.exports = addCommentHandler;
+module.exports = { addCommentHandler, addComment };

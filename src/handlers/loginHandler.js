@@ -30,4 +30,4 @@ function getuser(email, password) {
         )
 
 }
-module.exports = loginHandler;
+module.exports = { loginHandler, getuser };

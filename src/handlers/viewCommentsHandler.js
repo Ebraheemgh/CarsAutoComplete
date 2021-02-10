@@ -33,4 +33,4 @@ function getComments(car_id) {
         )
 
 }
-module.exports = viewCommentsHandler;
+module.exports = { viewCommentsHandler, getComments };

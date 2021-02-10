@@ -31,4 +31,4 @@ function adduser(data) {
     )
 }
 
-module.exports = signUpHandler;
+module.exports = { signUpHandler, adduser };
