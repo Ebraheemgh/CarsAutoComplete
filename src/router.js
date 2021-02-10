@@ -7,6 +7,8 @@ const signUpHandler = require("./handlers/signUpHandler");
 const loginHandler = require("./handlers/loginHandler");
 const mainHandler = require("./handlers/mainHandler");
 const signupformHandler = require("./handlers/signupformHandler");
+const viewCommentsHandler = require("./handlers/viewCommentsHandler");
+const addCommentHandler = require("./handlers/addCommentHandler");
 
 const router = (request, response) => {
     const url = request.url;
@@ -26,6 +28,10 @@ const router = (request, response) => {
         loginHandler(request, response);
     } else if (url.includes("main")) {
         mainHandler(request, response);
+    } else if (url.includes("viewcomments")) {
+        viewCommentsHandler(request, response);
+    } else if (url.includes("addcomment")) {
+        addCommentHandler(request, response);
     } else {
         missingHandler(request, response);
     }

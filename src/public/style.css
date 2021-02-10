@@ -69,11 +69,11 @@ html {
 #output {
     margin: auto;
     margin-top: 30px;
-    width: 500px;
-    height: max-content;
+    max-height: 500px;
     background: rgba(128, 128, 128, 0.589);
     display: none;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 #output>img {
@@ -208,4 +208,47 @@ span>img {
     border-radius: 5px;
     height: 30px;
     width: 90px;
+}
+
+#theComments>p {
+    margin-right: 10px;
+    font-weight: bold;
+    color: white;
+    font-size: large;
+}
+
+#theComments>p>label {
+    margin-right: 10px;
+    font-weight: bold;
+    background-color: rgba(3, 200, 226, 0.308);
+    font-size: large;
+    color: black;
+}
+
+#h2 {
+    color: beige;
+    background-color: rgba(3, 200, 226, 0.308);
+}
+
+textarea {
+    width: 80%;
+    height: 70px;
+    margin: auto;
+}
+
+#commentArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#commentArea>button {
+    width: 30%;
+    margin: auto;
+}
+
+#theComments>h2 {
+    color: rgb(119, 5, 5);
+    font-weight: bold;
+    margin-bottom: 10px;
 }

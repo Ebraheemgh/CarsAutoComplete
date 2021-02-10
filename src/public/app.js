@@ -12,6 +12,8 @@ const horsepower = document.getElementById("horsepower");
 const price = document.getElementById("price");
 const a_youtube = document.getElementById("a");
 const logout = document.getElementById("LogOut");
+const theComments = document.getElementById("theComments");
+const commentArea = document.getElementById("commentArea");
 
 
 
@@ -70,7 +72,67 @@ function getCars(body) {
                     price.textContent =
                         "Price => " + data[i].price + "$";
 
+
                     a_youtube.href = `https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
+
+                    viewTheComments(data[i]);
+
+                    // const commentUrl = `/viewcomments?id=${data[i].id}`;
+
+                    // fetch(commentUrl)
+                    //     .then(response => {
+                    //         theComments.innerHTML = "";
+                    //         console.log("response", response)
+                    //         if (response.status === 404) {
+                    //             const commentTextNode = document.createElement("h2");
+                    //             commentTextNode.textContent = "No Comments";
+                    //             theComments.appendChild(commentTextNode);
+
+                    //         } else if (!response.ok) throw new Error(response.status);
+
+                    //         return response.json();
+                    //     }).then(data => {
+                    //         for (let j = 0; j < data.length; j++) {
+                    //             const commentP = document.createElement("p");
+                    //             const commentLabel = document.createElement("label");
+                    //             commentLabel.textContent = data[j].first_name + " " + data[j].last_name;
+                    //             const commentTextNode = document.createTextNode(data[j].comment);
+                    //             commentP.appendChild(commentLabel);
+                    //             commentP.appendChild(commentTextNode);
+                    //             theComments.appendChild(commentP);
+
+                    //         }
+
+                    //         const textArea = document.createElement("textarea");
+                    //         const addCommentButton = document.createElement("button");
+
+                    //         addCommentButton.innerHTML = "Add Comment";
+                    //         addCommentButton.addEventListener("click", event => {
+                    //             if (textArea.textContent !== "") {
+                    //                 fetch("/addcomment", {
+                    //                     method: "POST",
+                    //                     body: JSON.stringify({
+                    //                         email: localStorage.getItem("currentUser"),
+                    //                         car_id: data[i].id,
+                    //                         comment: textArea.textContent,
+
+                    //                     }),
+                    //                     headers: {
+                    //                         "Content-type": "application/json"
+                    //                     }
+                    //                 }).then(response=>{
+                    //                  if (!response.ok) throw new Error(response.status);
+
+                    //                 })
+                    //             }
+                    //         })
+
+
+
+                    //     }).catch(error => {
+                    //         console.log(error)
+                    //     })
+
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });
@@ -99,9 +161,12 @@ document.getElementById("carInput").addEventListener("keyup", (event) => {
     }, time);
 });
 
+
+
 document.querySelector("form").addEventListener("submit", (event) => {
     event.preventDefault();
 });
+
 
 function fetchDefaultImage(data) {
 
@@ -163,4 +228,96 @@ function getFromLocalStorage(car) {
     }
     return "";
 
+}
+
+function viewTheComments(cardata) {
+    const commentUrl = `/viewcomments?id=${cardata.id}`;
+
+    fetch(commentUrl)
+        .then(response => {
+            theComments.innerHTML = "";
+            console.log("response", response)
+            if (response.status === 404) {
+                const commentTextNode = document.createElement("h2");
+                commentTextNode.textContent = "No Comments";
+                theComments.appendChild(commentTextNode);
+
+                const textArea = document.createElement("textarea");
+                const addCommentButton = document.createElement("button");
+
+                addCommentButton.innerHTML = "Add Comment";
+                addCommentButton.addEventListener("click", event => {
+                    console.log(textArea.value);
+                    if (textArea.value !== "") {
+                        fetch("/addcomment", {
+                            method: "POST",
+                            body: JSON.stringify({
+                                email: localStorage.getItem("currentUser"),
+                                car_id: cardata.id,
+                                comment: textArea.value
+
+                            }),
+                            headers: {
+                                "Content-type": "application/json"
+                            }
+                        }).then(response => {
+                            if (!response.ok) throw new Error(response.status);
+                            viewTheComments(cardata);
+                        }).catch(error => {
+                            console.log(error);
+                        })
+                    }
+                })
+                commentArea.innerHTML = "";
+                commentArea.appendChild(textArea);
+                commentArea.appendChild(addCommentButton);
+
+            } else if (!response.ok) throw new Error(response.status);
+
+            return response.json();
+        }).then(data => {
+            for (let j = 0; j < data.length; j++) {
+                const commentP = document.createElement("p");
+                const commentLabel = document.createElement("label");
+                commentLabel.textContent = data[j].first_name + " " + data[j].last_name;
+                const commentTextNode = document.createTextNode(data[j].comment);
+                commentP.appendChild(commentLabel);
+                commentP.appendChild(commentTextNode);
+                theComments.appendChild(commentP);
+
+            }
+
+            const textArea = document.createElement("textarea");
+            const addCommentButton = document.createElement("button");
+
+            addCommentButton.innerHTML = "Add Comment";
+            addCommentButton.addEventListener("click", event => {
+                console.log(textArea.value);
+                if (textArea.value !== "") {
+                    fetch("/addcomment", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            email: localStorage.getItem("currentUser"),
+                            car_id: cardata.id,
+                            comment: textArea.value
+
+                        }),
+                        headers: {
+                            "Content-type": "application/json"
+                        }
+                    }).then(response => {
+                        if (!response.ok) throw new Error(response.status);
+                        viewTheComments(cardata);
+                    }).catch(error => {
+                        console.log(error);
+                    })
+                }
+            })
+            commentArea.innerHTML = "";
+            commentArea.appendChild(textArea);
+            commentArea.appendChild(addCommentButton);
+
+        }).catch(error => {
+            console.log(error)
+        })
 }
