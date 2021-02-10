@@ -19,7 +19,7 @@ function loginHandler(request, response) {
         })
         .catch((error) => {
             response.writeHead(500, { "content-type": "text/html" });
-            response.end(`<h1>Something went wrong </h1>`);
+            response.end(`<h1>${error}</h1>`);
         });
 }
 
