@@ -12,6 +12,7 @@ const horsepower = document.getElementById("horsepower");
 const price = document.getElementById("price");
 const a_youtube = document.getElementById("a");
 const logout = document.getElementById("LogOut");
+const theComments = document.querySelector("theComments");
 
 
 
@@ -71,6 +72,14 @@ function getCars(body) {
                         "Price => " + data[i].price + "$";
 
                     a_youtube.href = `https://www.youtube.com/results?search_query=${data[i].make}+${data[i].model}`;
+
+                    fetch(`/viewcomments/?carId=${data[i].id}`)
+                        .then(response => {
+                            console.log("response", response)
+                            if (!response.ok) throw new Error(response.status);
+                            return response.json();
+                        }).catch(error => {})
+
                     output.style.display = "flex";
                     suggestion.innerHTML = "";
                 });

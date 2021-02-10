@@ -209,3 +209,8 @@ span>img {
     height: 30px;
     width: 90px;
 }
+
+#theComments>p>label {
+    margin-right: 10px;
+    font-weight: bold;
+}
