@@ -1,3 +1,8 @@
+if (localStorage.getItem("currentUser") === "") {
+    window.location.href = '/';
+
+}
+
 //const fetchCarImg = require("../handlers/imageGoogleSearch");
 const carImg = document.getElementById("carImg");
 const make = document.getElementById("make");
@@ -6,6 +11,15 @@ const model = document.getElementById("model");
 const horsepower = document.getElementById("horsepower");
 const price = document.getElementById("price");
 const a_youtube = document.getElementById("a");
+const logout = document.getElementById("LogOut");
+
+
+
+logout.addEventListener('click', event => {
+    localStorage.setItem("currentUser", '');
+    window.location.href = '/';
+
+})
 
 function getCars(body) {
     body = body.toLowerCase();

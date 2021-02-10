@@ -99,16 +99,18 @@ span>img {
     margin-left: 4px;
 }
 
-#img_btn{
+#img_btn {
     height: 100px;
-    width:160px;
+    width: 160px;
 }
 
-#youtube{
+#youtube {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 /* #arrow{
     width:40px;
     height: 20px;
@@ -128,17 +130,16 @@ span>img {
     transform: translateX(10px);
     animation-direction: alternate;
     opacity: .7;
-  }
-  
-  @keyframes skew {
+}
+
+@keyframes skew {
     0% {
-      transform: translateX(10px);
+        transform: translateX(10px);
     }
     100% {
-      transform: translateX(-70px);
+        transform: translateX(-70px);
     }
-  }
-
+}
 
 @media only screen and (max-width: 600px) {
     #carInput {
@@ -199,4 +200,12 @@ span>img {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+#LogOut {
+    background-color: rgba(255, 235, 205, 0.541);
+    color: blue;
+    border-radius: 5px;
+    height: 30px;
+    width: 90px;
 }
