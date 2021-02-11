@@ -25,4 +25,4 @@ function loginHandler(request, response) {
 }
 
 
-module.exports = { loginHandler };
+module.exports = loginHandler;

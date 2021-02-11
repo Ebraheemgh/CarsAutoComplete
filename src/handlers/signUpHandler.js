@@ -26,4 +26,4 @@ function signUpHandler(request, response) {
 
 
 
-module.exports = { signUpHandler };
+module.exports = signUpHandler;

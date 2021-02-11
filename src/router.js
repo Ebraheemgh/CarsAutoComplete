@@ -21,17 +21,17 @@ const router = (request, response) => {
     } else if (url.includes("google")) {
         googleHandler(request, response);
     } else if (url.includes("signup")) {
-        signUpHandler.signUpHandler(request, response);
+        signUpHandler(request, response);
     } else if (url.includes("regestration")) {
         signupformHandler(request, response);
     } else if (url.includes("login")) {
-        loginHandler.loginHandler(request, response);
+        loginHandler(request, response);
     } else if (url.includes("main")) {
         mainHandler(request, response);
     } else if (url.includes("viewcomments")) {
-        viewCommentsHandler.viewCommentsHandler(request, response);
+        viewCommentsHandler(request, response);
     } else if (url.includes("addcomment")) {
-        addCommentHandler.addCommentHandler(request, response);
+        addCommentHandler(request, response);
     } else {
         missingHandler(request, response);
     }

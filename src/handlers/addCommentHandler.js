@@ -21,4 +21,4 @@ function addCommentHandler(request, response) {
 
 
 
-module.exports = { addCommentHandler };
+module.exports = addCommentHandler;

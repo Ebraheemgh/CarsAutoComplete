@@ -26,4 +26,4 @@ function viewCommentsHandler(request, response) {
 }
 
 
-module.exports = { viewCommentsHandler };
+module.exports = viewCommentsHandler;
