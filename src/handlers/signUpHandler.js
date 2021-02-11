@@ -1,4 +1,5 @@
 const db = require("../database/connection");
+const model = require("../database/model")
 
 function signUpHandler(request, response) {
     let body = "";
@@ -7,7 +8,7 @@ function signUpHandler(request, response) {
     })
     request.on('end', () => {
         body = JSON.parse(body);
-        adduser(body).then(result => {
+        model.adduser(body).then(result => {
             response.writeHead(200, { "content-type": "application/json" });
             response.end(JSON.stringify(body));
         }).catch(error => {
@@ -23,12 +24,6 @@ function signUpHandler(request, response) {
 
 }
 
-function adduser(data) {
-    const values = [data.email, data.firstName, data.lastName, data.password];
-    return db.query(
-        "INSERT INTO users(email, first_name, last_name,password) VALUES($1, $2, $3,$4)",
-        values
-    )
-}
 
-module.exports = { signUpHandler, adduser };
+
+module.exports = { signUpHandler };

@@ -1,11 +1,12 @@
 const db = require("../database/connection");
+const model = require("../database/model")
 
 function viewCommentsHandler(request, response) {
 
 
     let carId = "";
     carId = new URL(`http://${request.url}`).searchParams.get("id");
-    getComments(carId)
+    model.getComments(carId)
         .then((comments) => {
 
             if (comments.rows.length > 0) {
@@ -24,13 +25,5 @@ function viewCommentsHandler(request, response) {
         });
 }
 
-function getComments(car_id) {
-    return db
-        .query(
-            `select users.first_name, users.last_name, comments.comment
-            from users inner join comments on
-            users.email = comments.email where comments.car_id='${car_id}';`
-        )
 
-}
-module.exports = { viewCommentsHandler, getComments };
+module.exports = { viewCommentsHandler };
