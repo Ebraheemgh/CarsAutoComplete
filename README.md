@@ -30,8 +30,7 @@ when you type on the specific car name from the list will appear to you informat
 *the application deployed by heroku.
 
 **Diagram:**
-
-<br>
+----
 ![](https://i.imgur.com/Bb50l2g.jpg)
 
 ![](https://i.imgur.com/UcN7Zl1.jpg)
