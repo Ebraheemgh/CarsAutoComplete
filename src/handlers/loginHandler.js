@@ -1,11 +1,12 @@
 const db = require("../database/connection");
+const model = require("../database/model")
 
 function loginHandler(request, response) {
     let email = "";
     let password = "";
     email = new URL(`http://${request.url}`).searchParams.get("email");
     password = new URL(`http://${request.url}`).searchParams.get("password");
-    getuser(email, password)
+    model.getuser(email, password)
         .then((user) => {
             if (user.rows.length > 0) {
                 //if exsist user
@@ -23,11 +24,5 @@ function loginHandler(request, response) {
         });
 }
 
-function getuser(email, password) {
-    return db
-        .query(
-            `select * from users where email='${email}' and password='${password}';`
-        )
 
-}
-module.exports = { loginHandler, getuser };
+module.exports = { loginHandler };

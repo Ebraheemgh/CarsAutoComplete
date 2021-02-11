@@ -1,4 +1,5 @@
 const db = require("../database/connection");
+const model = require("../database/model")
 
 function addCommentHandler(request, response) {
     let body = "";
@@ -7,7 +8,7 @@ function addCommentHandler(request, response) {
     })
     request.on('end', () => {
         body = JSON.parse(body);
-        addComment(body).then(result => {
+        model.addComment(body).then(result => {
             response.writeHead(200, { "content-type": "application/json" });
             response.end(JSON.stringify(body));
         }).catch(error => {
@@ -18,12 +19,6 @@ function addCommentHandler(request, response) {
 
 }
 
-function addComment(data) {
-    const values = [data.email, data.car_id, data.comment];
-    return db.query(
-        "INSERT INTO comments(email, car_id, comment) VALUES($1, $2, $3)",
-        values
-    )
-}
 
-module.exports = { addCommentHandler, addComment };
+
+module.exports = { addCommentHandler };

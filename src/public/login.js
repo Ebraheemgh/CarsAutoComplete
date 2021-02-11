@@ -47,7 +47,7 @@ form.addEventListener("submit", function(event) {
             })
             .catch((err) => {
                 if (err.message === "404") {
-                    error.textContent = "Invalid email!";
+                    error.textContent = "Invalid email or password!";
 
                 } else {
 
